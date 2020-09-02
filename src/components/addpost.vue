@@ -2,6 +2,7 @@
     <div class="addpost">
         <form @submit="addapost">
             <input type="text" v-model="title" placeholder="Enter Title" required>
+            <input type="text" v-model="body" placeholder="Enter Description" required>
             <button type="submit">Add a Post</button>
         </form>
     </div>
@@ -14,13 +15,14 @@ export default {
     data(){
         return {
             title : '',
+            body : ''
         }
     },
     methods:{
         ...mapActions(['addpost']),
         addapost(e){
             e.preventDefault();
-            this.addpost(this.title);
+            this.addpost({ title : this.title, body : this.body });
         }
     }
 }
@@ -30,9 +32,11 @@ export default {
     form
     {
         display:flex;
+        flex-direction:column;
     }
     form input[type="text"]{
-        flex:10;
+        flex:5;
+        margin:10px;
         padding:10px;
         border:2px solid #41b883;
         border-radius:5px;

@@ -12,12 +12,9 @@ const actions ={
         .then(res => commit('setposts', res.data))
         .catch(err => console.log(err));
     },
-    addpost({ commit },title){
-        const putdata = {
-            title : title,
-            body : 'eum sed dolores ipsam sint possimus debitis occaecati debitis qui qui et ut placeat enim earum aut odit facilis consequatur suscipit necessitatibus rerum sed inventore temporibus consequatur'
-        }
-        axios.post('https://jsonplaceholder.typicode.com/posts',putdata)
+    addpost({ commit } , obj){
+        console.log(obj);
+        axios.post('https://jsonplaceholder.typicode.com/posts',obj)
         .then(res => commit('addthepost' , res.data))
         .catch(err => console.log(err));
     },
